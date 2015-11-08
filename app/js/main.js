@@ -1,21 +1,9 @@
+var $ = require("jquery");
+var _ = require("underscore");
+var Backbone = require('backbone');
 
-require.config({
-	paths: {
-		jquery: "../bower_components/jquery/dist/jquery.min",
-		underscore: "../bower_components/underscore/underscore-min",
-		backbone: "../bower_components/backbone/backbone-min",
-		text: "../bower_components/text/text"
-	},
-	shim: {
-		jquery: { exports: '$' },
-		underscore: { exports: '_'},
-		backbone: {
-        deps: ['jquery', 'underscore'],
-        exports: 'Backbone'
-    }
-	}
-});
+var Rouuter = require("./router/router.js");
 
-requirejs(["app","router"],function(App,Router){
-	console.log('main')
-});
+
+console.log('jquery verson: %s on main',$.fn.jquery);
+console.log('Backbone version: %s on main',Backbone.VERSION);
