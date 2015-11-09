@@ -3,13 +3,13 @@ var webpack = require('webpack');
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 // var Uglify = require("webpack/lib/optimize/UglifyJsPlugin");
 
-var appTypeName =  "app"; // app or demo
+var appTypeName =  "app";
 
 module.exports = {
     // cache: true,
     context: __dirname, // default: process.cwd()
     entry:{
-    	entryMain: "./" + appTypeName + "/js/main.js",
+    	userMain: "./" + appTypeName + "/script/userMain.js",
         vendor: ['jquery','underscore','backbone']
     },
     output: {
@@ -19,12 +19,17 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.css$/, loader: "style!css" },
+            /*{ test: /\.css$/, loader: "style!css" },
             // Extract css files
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader" 
-            },
+            },*/
+            {
+                test: /\.html$/,
+                loader: "html-loader" // installed html-loader
+            }
+
         ]
     },
     // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
@@ -43,6 +48,5 @@ module.exports = {
             underscore:     __dirname + "/app/bower_components/underscore/underscore.js",
             backbone:       __dirname + "/app/bower_components/backbone/backbone.js"
         }
-
     }
 };
