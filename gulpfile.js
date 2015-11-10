@@ -65,6 +65,13 @@ gulp.task("webpack:build-dev", function(callback) {
 	});
 });
 
+gulp.task("watch",function(){
+	gulp.watch(['./app/script/**','./app/template/**'],['webpack:build-dev'])
+			.on('change', function(event) {
+			  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+			});
+});
+
 gulp.task("help",function(){
 	var tasks = Object.keys(gulp.tasks);
 	for(var key in tasks){
